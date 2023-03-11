@@ -27,7 +27,7 @@ public class ItemDatabase : IItemDatabase
     public async Task<Item?> GetAsync(string id)
     {
         var item = await _itemCollection.Find(x => x.Id == id)
-            .FirstOrDefaultAsync();
+            .SingleOrDefaultAsync();
 
         return item?.Adapt<Item>();
     }
@@ -37,7 +37,7 @@ public class ItemDatabase : IItemDatabase
         await _itemCollection.InsertOneAsync(item.Adapt<DatabaseItem>());
 
         var savedItem = await _itemCollection.Find(x => x.Id == item.Id)
-            .FirstOrDefaultAsync();
+            .SingleOrDefaultAsync();
 
         return savedItem.Adapt<Item>();
     }
@@ -47,7 +47,7 @@ public class ItemDatabase : IItemDatabase
         await _itemCollection.ReplaceOneAsync(x => x.Id == id, item.Adapt<DatabaseItem>());
 
         var savedItem = await _itemCollection.Find(x => x.Id == id)
-            .FirstOrDefaultAsync();
+            .SingleOrDefaultAsync();
 
         return savedItem?.Adapt<Item>();
     }
@@ -55,7 +55,7 @@ public class ItemDatabase : IItemDatabase
     public async Task<Item?> DeleteAsync(string id)
     {
         var item = await _itemCollection.Find(x => x.Id == id)
-            .FirstOrDefaultAsync();
+            .SingleOrDefaultAsync();
 
         if (item is null) return null;
 
