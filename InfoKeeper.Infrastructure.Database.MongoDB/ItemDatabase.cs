@@ -1,5 +1,6 @@
 ﻿using InfoKeeper.Core.Models;
 using InfoKeeper.Infrastructure.Database.Abstract;
+using InfoKeeper.Infrastructure.Database.MongoDB.Extensions;
 using InfoKeeper.Infrastructure.Database.MongoDB.Models;
 using Mapster;
 using MongoDB.Driver;
@@ -65,16 +66,9 @@ public class ItemDatabase : IItemDatabase
 
     public async Task<List<Item>> Search(string query)
     {
-        var items = await _itemCollection.Find(x => CheckIfItemMatchesQuery(x, query))
+        var items = await _itemCollection.Find(x => x.MatchesQuery(query))
             .ToListAsync();
 
         return items.Adapt<List<Item>>();
-    }
-
-    private static bool CheckIfItemMatchesQuery(DatabaseItem item, string query)
-    {
-        var lowerQuery = query.ToLower();
-
-        return item.Title.ToLower().Contains(lowerQuery) || item.Content.ToLower().Contains(lowerQuery);
     }
 }
