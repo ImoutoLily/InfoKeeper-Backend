@@ -1,4 +1,5 @@
-﻿using InfoKeeper.Infrastructure.Database.Abstract;
+﻿using InfoKeeper.Configuration.Settings;
+using InfoKeeper.Infrastructure.Database.Abstract;
 using InfoKeeper.Infrastructure.Database.MongoDB.Models;
 using Mapster;
 using MongoDB.Driver;
@@ -6,13 +7,13 @@ using Tag = InfoKeeper.Core.Models.Tag;
 
 namespace InfoKeeper.Infrastructure.Database.MongoDB;
 
-public class TagDatabase : ITagDatabase
+public class TagDatabase : AbstractDatabase, ITagDatabase
 {
     private readonly IMongoCollection<DatabaseTag> _tagCollection;
 
-    public TagDatabase()
+    public TagDatabase(InfoKeeperDatabaseSettings settings) : base(settings)
     {
-        _tagCollection = null!;
+        _tagCollection = Database.GetCollection<DatabaseTag>(settings.TagCollectionName);
     }
 
     public async Task<List<Tag>> GetAsync()

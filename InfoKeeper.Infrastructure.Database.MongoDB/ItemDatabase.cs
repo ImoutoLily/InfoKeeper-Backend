@@ -1,4 +1,5 @@
-﻿using InfoKeeper.Core.Models;
+﻿using InfoKeeper.Configuration.Settings;
+using InfoKeeper.Core.Models;
 using InfoKeeper.Infrastructure.Database.Abstract;
 using InfoKeeper.Infrastructure.Database.MongoDB.Extensions;
 using InfoKeeper.Infrastructure.Database.MongoDB.Models;
@@ -7,13 +8,13 @@ using MongoDB.Driver;
 
 namespace InfoKeeper.Infrastructure.Database.MongoDB;
 
-public class ItemDatabase : IItemDatabase
+public class ItemDatabase : AbstractDatabase, IItemDatabase
 {
     private readonly IMongoCollection<DatabaseItem> _itemCollection;
 
-    public ItemDatabase()
+    public ItemDatabase(InfoKeeperDatabaseSettings settings) : base(settings)
     {
-        _itemCollection = null!;
+        _itemCollection = Database.GetCollection<DatabaseItem>(settings.ItemCollectionName);
     }
 
     public async Task<List<Item>> GetAsync()

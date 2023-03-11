@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\InfoKeeper.Configuration.Settings\InfoKeeper.Configuration.Settings.csproj" />
       <ProjectReference Include="..\InfoKeeper.Core.Models\InfoKeeper.Core.Models.csproj" />
     </ItemGroup>
 
