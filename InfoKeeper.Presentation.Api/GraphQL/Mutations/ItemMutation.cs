@@ -1,7 +1,7 @@
 ﻿using InfoKeeper.Core.Business.Abstract;
 using InfoKeeper.Core.Models;
 
-namespace InfoKeeper.Presentation.Api.Mutations;
+namespace InfoKeeper.Presentation.Api.GraphQL.Mutations;
 
 [ExtendObjectType(Name = "Mutation")]
 public class ItemMutation

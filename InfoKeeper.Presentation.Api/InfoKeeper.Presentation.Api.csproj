@@ -19,4 +19,8 @@
       <ProjectReference Include="..\InfoKeeper.Infrastructure.Database.MongoDB\InfoKeeper.Infrastructure.Database.MongoDB.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="GraphQL" />
+    </ItemGroup>
+
 </Project>

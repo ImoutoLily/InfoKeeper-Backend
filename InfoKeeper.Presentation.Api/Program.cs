@@ -3,8 +3,8 @@ using InfoKeeper.Core.Business;
 using InfoKeeper.Core.Business.Abstract;
 using InfoKeeper.Infrastructure.Database.Abstract;
 using InfoKeeper.Infrastructure.Database.MongoDB;
-using InfoKeeper.Presentation.Api.Mutations;
-using InfoKeeper.Presentation.Api.Queries;
+using InfoKeeper.Presentation.Api.GraphQL.Mutations;
+using InfoKeeper.Presentation.Api.GraphQL.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
