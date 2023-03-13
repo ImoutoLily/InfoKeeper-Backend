@@ -1,4 +1,4 @@
-﻿namespace InfoKeeper.Infrastructure.Database.Abstract.Traits;
+﻿namespace InfoKeeper.Shared.Traits;
 
 public interface IIsSearchable<T>
 {
