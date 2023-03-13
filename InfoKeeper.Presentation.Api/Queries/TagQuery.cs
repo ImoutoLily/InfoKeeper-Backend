@@ -4,12 +4,11 @@ using InfoKeeper.Core.Models;
 namespace InfoKeeper.Presentation.Api.Queries;
 
 [ExtendObjectType(Name = "Query")]
-public class ItemQuery
+public class TagQuery
 {
-    public async Task<List<Item>> GetItemsAsync([Service] IItemService service) 
+    public async Task<List<Tag>> GetTagsAsync([Service] ITagService service)
         => await service.GetAsync();
-    
-    // TODO: check null conditions
-    public async Task<Item?> GetItemAsync([Service] IItemService service, string id) 
+
+    public async Task<Tag?> GetTagAsync([Service] ITagService service, string id)
         => await service.GetAsync(id);
 }

@@ -12,7 +12,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\InfoKeeper.Configuration.Settings\InfoKeeper.Configuration.Settings.csproj" />
+      <ProjectReference Include="..\InfoKeeper.Core.Business.Abstract\InfoKeeper.Core.Business.Abstract.csproj" />
+      <ProjectReference Include="..\InfoKeeper.Core.Business\InfoKeeper.Core.Business.csproj" />
       <ProjectReference Include="..\InfoKeeper.Core.Models\InfoKeeper.Core.Models.csproj" />
+      <ProjectReference Include="..\InfoKeeper.Infrastructure.Database.Abstract\InfoKeeper.Infrastructure.Database.Abstract.csproj" />
+      <ProjectReference Include="..\InfoKeeper.Infrastructure.Database.MongoDB\InfoKeeper.Infrastructure.Database.MongoDB.csproj" />
     </ItemGroup>
 
 </Project>
