@@ -1,9 +1,10 @@
-﻿using InfoKeeper.Core.Business.Abstract;
+﻿using HotChocolate.Language;
+using InfoKeeper.Core.Business.Abstract;
 using InfoKeeper.Core.Models;
 
 namespace InfoKeeper.Presentation.Api.GraphQL.Queries;
 
-[ExtendObjectType(Name = "Query")]
+[ExtendObjectType(OperationType.Query)]
 public class ItemQuery
 {
     public async Task<List<Item>> GetItemsAsync([Service] IItemService service) 

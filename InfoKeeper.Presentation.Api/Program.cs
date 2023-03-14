@@ -20,10 +20,10 @@ builder.Services.AddTransient<IItemService, ItemService>();
 
 builder.Services
     .AddGraphQLServer()
-    .AddQueryType(x => x.Name("Query"))
+    .AddQueryType()
     .AddTypeExtension<TagQuery>()
     .AddTypeExtension<ItemQuery>()
-    .AddMutationType(x => x.Name("Mutation"))
+    .AddMutationType()
     .AddTypeExtension<TagMutation>()
     .AddTypeExtension<ItemMutation>();
 

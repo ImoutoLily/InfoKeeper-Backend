@@ -34,9 +34,11 @@ public class TagDatabase : AbstractDatabase, ITagDatabase
 
     public async Task<Tag> CreateAsync(Tag tag)
     {
-        await _tagCollection.InsertOneAsync(tag.Adapt<DatabaseTag>());
+        var databaseTag = tag.Adapt<DatabaseTag>();
+        
+        await _tagCollection.InsertOneAsync(databaseTag);
 
-        var savedTag = await _tagCollection.Find(x => x.Id == tag.Id)
+        var savedTag = await _tagCollection.Find(x => x.Id == databaseTag.Id)
             .SingleOrDefaultAsync();
 
         return savedTag.Adapt<Tag>();
@@ -44,6 +46,8 @@ public class TagDatabase : AbstractDatabase, ITagDatabase
 
     public async Task<Tag?> UpdateAsync(string id, Tag tag)
     {
+        tag.Id = id;
+        
         await _tagCollection.ReplaceOneAsync(x => x.Id == id, tag.Adapt<DatabaseTag>());
         
         var savedTag = await _tagCollection.Find(x => x.Id == id)

@@ -1,9 +1,10 @@
-﻿using InfoKeeper.Core.Business.Abstract;
+﻿using HotChocolate.Language;
+using InfoKeeper.Core.Business.Abstract;
 using InfoKeeper.Core.Models;
 
 namespace InfoKeeper.Presentation.Api.GraphQL.Mutations;
 
-[ExtendObjectType(Name = "Mutation")]
+[ExtendObjectType(OperationType.Mutation)]
 public class TagMutation
 {
     public async Task<Tag> CreateTagAsync([Service] ITagService service, Tag tag)
@@ -12,6 +13,6 @@ public class TagMutation
     public async Task<Tag?> UpdateTagAsync([Service] ITagService service, string id, Tag tag)
         => await service.UpdateAsync(id, tag);
 
-    public async Task<Tag?> DeleteItemAsync([Service] ITagService service, string id)
+    public async Task<Tag?> DeleteTagAsync([Service] ITagService service, string id)
         => await service.DeleteAsync(id);
 }

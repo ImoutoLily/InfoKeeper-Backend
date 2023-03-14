@@ -35,9 +35,11 @@ public class ItemDatabase : AbstractDatabase, IItemDatabase
 
     public async Task<Item> CreateAsync(Item item)
     {
-        await _itemCollection.InsertOneAsync(item.Adapt<DatabaseItem>());
+        var databaseItem = item.Adapt<DatabaseItem>();
+        
+        await _itemCollection.InsertOneAsync(databaseItem);
 
-        var savedItem = await _itemCollection.Find(x => x.Id == item.Id)
+        var savedItem = await _itemCollection.Find(x => x.Id == databaseItem.Id)
             .SingleOrDefaultAsync();
 
         return savedItem.Adapt<Item>();
@@ -45,6 +47,8 @@ public class ItemDatabase : AbstractDatabase, IItemDatabase
 
     public async Task<Item?> UpdateAsync(string id, Item item)
     {
+        item.Id = id;
+        
         await _itemCollection.ReplaceOneAsync(x => x.Id == id, item.Adapt<DatabaseItem>());
 
         var savedItem = await _itemCollection.Find(x => x.Id == id)
