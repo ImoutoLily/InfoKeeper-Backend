@@ -7,5 +7,5 @@ public class Item
     public string Content { get; set; } = null!;
     public DateTime CreationTimeStamp { get; set; }
 
-    public List<Tag> Tags { get; set; } = null!;
+    public IList<Tag> Tags { get; set; } = null!;
 }
