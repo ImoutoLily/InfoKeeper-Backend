@@ -28,9 +28,9 @@ public class TagService : ITagService
         return await _database.CreateAsync(tag);
     }
 
-    public async Task<Tag?> UpdateAsync(string id, Tag tag)
+    public async Task<Tag?> UpdateAsync(Tag tag)
     {
-        return await _database.UpdateAsync(id, tag);
+        return await _database.UpdateAsync(tag);
     }
 
     public async Task<Tag?> DeleteAsync(string id)

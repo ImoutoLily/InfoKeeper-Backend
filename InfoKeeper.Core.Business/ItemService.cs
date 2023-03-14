@@ -28,9 +28,9 @@ public class ItemService : IItemService
         return await _database.CreateAsync(item);
     }
 
-    public async Task<Item?> UpdateAsync(string id, Item item)
+    public async Task<Item?> UpdateAsync(Item item)
     {
-        return await _database.UpdateAsync(id, item);
+        return await _database.UpdateAsync(item);
     }
 
     public async Task<Item?> DeleteAsync(string id)

@@ -44,16 +44,14 @@ public class TagDatabase : AbstractDatabase, ITagDatabase
         return savedTag.Adapt<Tag>();
     }
 
-    public async Task<Tag?> UpdateAsync(string id, Tag tag)
+    public async Task<Tag?> UpdateAsync(Tag tag)
     {
-        tag.Id = id;
+        await _tagCollection.ReplaceOneAsync(x => x.Id == tag.Id, tag.Adapt<DatabaseTag>());
         
-        await _tagCollection.ReplaceOneAsync(x => x.Id == id, tag.Adapt<DatabaseTag>());
-        
-        var savedTag = await _tagCollection.Find(x => x.Id == id)
+        var savedTag = await _tagCollection.Find(x => x.Id == tag.Id)
             .SingleOrDefaultAsync();
 
-        return savedTag?.Adapt<Tag>(); // TODO: check if this functions correctly  
+        return savedTag?.Adapt<Tag>();
     }
 
     public async Task<Tag?> DeleteAsync(string id)

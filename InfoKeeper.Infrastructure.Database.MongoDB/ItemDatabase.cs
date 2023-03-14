@@ -45,13 +45,11 @@ public class ItemDatabase : AbstractDatabase, IItemDatabase
         return savedItem.Adapt<Item>();
     }
 
-    public async Task<Item?> UpdateAsync(string id, Item item)
+    public async Task<Item?> UpdateAsync(Item item)
     {
-        item.Id = id;
-        
-        await _itemCollection.ReplaceOneAsync(x => x.Id == id, item.Adapt<DatabaseItem>());
+        await _itemCollection.ReplaceOneAsync(x => x.Id == item.Id, item.Adapt<DatabaseItem>());
 
-        var savedItem = await _itemCollection.Find(x => x.Id == id)
+        var savedItem = await _itemCollection.Find(x => x.Id == item.Id)
             .SingleOrDefaultAsync();
 
         return savedItem?.Adapt<Item>();
