@@ -35,6 +35,8 @@ public class ItemDatabase : AbstractDatabase, IItemDatabase
 
     public async Task<Item> CreateAsync(Item item)
     {
+        item.CreationDateTime = DateTime.Now;
+
         var databaseItem = item.Adapt<DatabaseItem>();
         
         await _itemCollection.InsertOneAsync(databaseItem);
