@@ -1,12 +1,12 @@
-using InfoKeeper.Configuration.Settings;
 using InfoKeeper.Presentation.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var databaseSettings = new InfoKeeperDatabaseSettings();
-builder.Configuration.Bind("InfoKeeperDatabaseSettings", databaseSettings);
+builder.Configuration
+    .AddEnvFiles(builder.Environment);
 
-builder.Services.AddAllServices(databaseSettings);
+builder.Services
+    .AddAllServices(builder.Configuration);
 
 var app = builder.Build();
 

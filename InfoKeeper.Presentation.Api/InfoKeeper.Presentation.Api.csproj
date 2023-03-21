@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="DotNetEnv" Version="2.5.0" />
       <PackageReference Include="HotChocolate.AspNetCore" Version="13.0.5" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\InfoKeeper.Configuration.Settings\InfoKeeper.Configuration.Settings.csproj" />
       <ProjectReference Include="..\InfoKeeper.Core.Business.Abstract\InfoKeeper.Core.Business.Abstract.csproj" />
       <ProjectReference Include="..\InfoKeeper.Core.Business\InfoKeeper.Core.Business.csproj" />
       <ProjectReference Include="..\InfoKeeper.Core.Models\InfoKeeper.Core.Models.csproj" />

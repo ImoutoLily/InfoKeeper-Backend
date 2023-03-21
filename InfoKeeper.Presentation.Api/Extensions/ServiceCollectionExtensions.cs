@@ -1,5 +1,4 @@
-﻿using InfoKeeper.Configuration.Settings;
-using InfoKeeper.Core.Business;
+﻿using InfoKeeper.Core.Business;
 using InfoKeeper.Core.Business.Abstract;
 using InfoKeeper.Infrastructure.Database.Abstract;
 using InfoKeeper.Infrastructure.Database.MySQL;
@@ -11,11 +10,10 @@ namespace InfoKeeper.Presentation.Api.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddAllServices(this IServiceCollection services, 
-        InfoKeeperDatabaseSettings databaseSettings)
+    public static IServiceCollection AddAllServices(this IServiceCollection services,
+        ConfigurationManager configuration)
     {
-        services
-            .AddConfiguration(databaseSettings)
+        services.AddContext(configuration)
             .AddDatabase()
             .AddBusinessLogic()
             .AddGraphQl();
@@ -23,17 +21,23 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    private static IServiceCollection AddConfiguration(this IServiceCollection services, 
-        InfoKeeperDatabaseSettings databaseSettings)
+    private static IServiceCollection AddContext(this IServiceCollection services,
+        IConfiguration configuration)
     {
-        return services.AddSingleton(databaseSettings);
+        var connectionString = configuration["INFO_KEEPER_CONNECTION_STRING"];
+        var version = configuration["INFO_KEEPER_VERSION"];
+
+        if (connectionString is null || version is null) 
+            throw new NullReferenceException("Not all required environment variables are set.");
+        
+        return services.AddDbContext<InfoKeeperContext>(x =>
+        {
+            x.UseMySql(connectionString, new MySqlServerVersion(new Version(version)));
+        });
     }
 
     private static IServiceCollection AddDatabase(this IServiceCollection services)
     {
-        services.AddDbContext<InfoKeeperContext>(x => 
-            x.UseMySql("", new MySqlServerVersion(new Version(8, 0, 32))));
-
         return services.AddTransient<ITagDatabase, TagDatabase>()
             .AddTransient<IItemDatabase, ItemDatabase>();
     }
