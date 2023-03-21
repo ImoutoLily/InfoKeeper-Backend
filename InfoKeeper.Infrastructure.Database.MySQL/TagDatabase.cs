@@ -18,7 +18,7 @@ public class TagDatabase : AbstractDatabase, ITagDatabase
         return await _tags.ToListAsync();
     }
 
-    public async Task<Tag?> GetAsync(string id)
+    public async Task<Tag?> GetAsync(int id)
     {
         return await _tags.SingleOrDefaultAsync(x => x.Id == id);
     }
@@ -46,7 +46,7 @@ public class TagDatabase : AbstractDatabase, ITagDatabase
         return storedTag;
     }
 
-    public async Task<Tag?> DeleteAsync(string id)
+    public async Task<Tag?> DeleteAsync(int id)
     {
         var tag = await _tags.SingleOrDefaultAsync(x => x.Id == id);
 

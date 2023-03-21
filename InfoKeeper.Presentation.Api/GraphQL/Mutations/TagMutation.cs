@@ -13,6 +13,6 @@ public class TagMutation
     public async Task<Tag?> UpdateTagAsync([Service] ITagService service, Tag tag)
         => await service.UpdateAsync(tag);
 
-    public async Task<Tag?> DeleteTagAsync([Service] ITagService service, string id)
+    public async Task<Tag?> DeleteTagAsync([Service] ITagService service, int id)
         => await service.DeleteAsync(id);
 }

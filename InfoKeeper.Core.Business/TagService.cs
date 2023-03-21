@@ -18,7 +18,7 @@ public class TagService : ITagService
         return await _database.GetAsync();
     }
 
-    public async Task<Tag?> GetAsync(string id)
+    public async Task<Tag?> GetAsync(int id)
     {
         return await _database.GetAsync(id);
     }
@@ -33,7 +33,7 @@ public class TagService : ITagService
         return await _database.UpdateAsync(tag);
     }
 
-    public async Task<Tag?> DeleteAsync(string id)
+    public async Task<Tag?> DeleteAsync(int id)
     {
         return await _database.DeleteAsync(id);
     }

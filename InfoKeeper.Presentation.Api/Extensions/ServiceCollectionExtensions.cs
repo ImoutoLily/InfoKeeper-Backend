@@ -2,9 +2,10 @@
 using InfoKeeper.Core.Business;
 using InfoKeeper.Core.Business.Abstract;
 using InfoKeeper.Infrastructure.Database.Abstract;
-using InfoKeeper.Infrastructure.Database.MongoDB;
+using InfoKeeper.Infrastructure.Database.MySQL;
 using InfoKeeper.Presentation.Api.GraphQL.Mutations;
 using InfoKeeper.Presentation.Api.GraphQL.Queries;
+using Microsoft.EntityFrameworkCore;
 
 namespace InfoKeeper.Presentation.Api.Extensions;
 
@@ -30,6 +31,9 @@ public static class ServiceCollectionExtensions
 
     private static IServiceCollection AddDatabase(this IServiceCollection services)
     {
+        services.AddDbContext<InfoKeeperContext>(x => 
+            x.UseMySql("", new MySqlServerVersion(new Version(8, 0, 32))));
+
         return services.AddTransient<ITagDatabase, TagDatabase>()
             .AddTransient<IItemDatabase, ItemDatabase>();
     }

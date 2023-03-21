@@ -13,6 +13,6 @@ public class ItemMutation
     public async Task<Item?> UpdateItemAsync([Service] IItemService service, Item item)
         => await service.UpdateAsync(item);
 
-    public async Task<Item?> DeleteItemAsync([Service] IItemService service, string id)
+    public async Task<Item?> DeleteItemAsync([Service] IItemService service, int id)
         => await service.DeleteAsync(id);
 }

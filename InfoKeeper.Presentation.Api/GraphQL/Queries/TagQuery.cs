@@ -10,6 +10,6 @@ public class TagQuery
     public async Task<List<Tag>> GetTagsAsync([Service] ITagService service)
         => await service.GetAsync();
 
-    public async Task<Tag?> GetTagAsync([Service] ITagService service, string id)
+    public async Task<Tag?> GetTagAsync([Service] ITagService service, int id)
         => await service.GetAsync(id);
 }

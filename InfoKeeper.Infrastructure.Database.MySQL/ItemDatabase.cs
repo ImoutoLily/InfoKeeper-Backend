@@ -19,7 +19,7 @@ public class ItemDatabase : AbstractDatabase, IItemDatabase
         return await _items.ToListAsync();
     }
 
-    public async Task<Item?> GetAsync(string id)
+    public async Task<Item?> GetAsync(int id)
     {
         return await _items.SingleOrDefaultAsync(x => x.Id == id);
     }
@@ -47,7 +47,7 @@ public class ItemDatabase : AbstractDatabase, IItemDatabase
         return storedItem;
     }
 
-    public async Task<Item?> DeleteAsync(string id)
+    public async Task<Item?> DeleteAsync(int id)
     {
         var item = await _items.SingleOrDefaultAsync(x => x.Id == id);
 

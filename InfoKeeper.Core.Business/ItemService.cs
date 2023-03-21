@@ -18,7 +18,7 @@ public class ItemService : IItemService
         return await _database.GetAsync();
     }
 
-    public async Task<Item?> GetAsync(string id)
+    public async Task<Item?> GetAsync(int id)
     {
         return await _database.GetAsync(id);
     }
@@ -33,7 +33,7 @@ public class ItemService : IItemService
         return await _database.UpdateAsync(item);
     }
 
-    public async Task<Item?> DeleteAsync(string id)
+    public async Task<Item?> DeleteAsync(int id)
     {
         return await _database.DeleteAsync(id);
     }

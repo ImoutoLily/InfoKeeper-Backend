@@ -10,6 +10,6 @@ public class ItemQuery
     public async Task<List<Item>> GetItemsAsync([Service] IItemService service) 
         => await service.GetAsync();
     
-    public async Task<Item?> GetItemAsync([Service] IItemService service, string id) 
+    public async Task<Item?> GetItemAsync([Service] IItemService service, int id) 
         => await service.GetAsync(id);
 }

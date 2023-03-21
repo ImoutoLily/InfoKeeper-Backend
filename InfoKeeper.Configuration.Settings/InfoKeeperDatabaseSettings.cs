@@ -2,8 +2,8 @@
 
 public class InfoKeeperDatabaseSettings
 {
-    public string MongoUrl { get; set; } = null!;
-    public string DatabaseName { get; set; } = null!;
-    public string TagCollectionName { get; set; } = null!;
-    public string ItemCollectionName { get; set; } = null!;
+    public string Server { get; set; } = null!;
+    public string User { get; set; } = null!;
+    public string Password { get; set; } = null!;
+    public string Database { get; set; } = null!;
 }
