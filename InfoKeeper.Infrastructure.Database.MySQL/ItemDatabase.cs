@@ -1,6 +1,5 @@
 ﻿using InfoKeeper.Core.Models;
 using InfoKeeper.Infrastructure.Database.Abstract;
-using InfoKeeper.Infrastructure.Database.MySQL.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace InfoKeeper.Infrastructure.Database.MySQL;
@@ -62,7 +61,7 @@ public class ItemDatabase : AbstractDatabase, IItemDatabase
 
     public async Task<List<Item>> Search(string query)
     {
-        return await _items.Where(x => x.MatchesQuery(query))
+        return await _items.Where(x => x.Title.Contains(query) || x.Content.Contains(query))
             .ToListAsync();
     }
 }
