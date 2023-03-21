@@ -19,8 +19,10 @@ public class ItemConfiguration : IEntityTypeConfiguration<Item>
             .HasMaxLength(10_000);
 
         builder.Property(x => x.CreationDateTime)
+            .IsRequired()
             .HasDefaultValue(DateTime.Now);
 
-        builder.HasMany(x => x.Tags);
+        builder.HasMany(x => x.Tags)
+            .WithMany(x => x.Items);
     }
 }

@@ -16,5 +16,8 @@ public class TagConfiguration : IEntityTypeConfiguration<Tag>
 
         builder.Property(x => x.Color)
             .HasMaxLength(6);
+
+        builder.HasMany(x => x.Items)
+            .WithMany(x => x.Tags);
     }
 }
