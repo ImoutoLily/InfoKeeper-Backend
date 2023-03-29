@@ -40,20 +40,18 @@ INFO_KEEPER_VERSION="8.0.0"
 
 More information about connection strings in MySQL can be found [here](https://dev.mysql.com/doc/connector-net/en/connector-net-connections-string.html), and all the connection options can be found [here](https://dev.mysql.com/doc/connector-net/en/connector-net-8-0-connection-options.html).
 
-Once the .env files have bees successfully created, we should install the `ef` CLI and use it to update / create the database.
+Once the environment variables have been successfully set, install the `ef` CLI and use it to update / create the database.
 
 ```bash
 dotnet tool install --global dotnet-ef
-dotnet ef database update --project InfoKeeper.Presentation.Api -- --environment Development
+dotnet ef database update --project InfoKeeper.Presentation.Api
 ```
-
-If you want to use the `prod.env` file for updating the database, then you should use the runtime environment `Production`.
 
 ## Run
 The program can be ran by navigating into the `InfoKeeper` directory and running the following command:
 
 ```bash
-dotnet run --project InfoKeeper.Presentation.Api --configuration Debug --environment Development
+dotnet run --project InfoKeeper.Presentation.Api --configuration Release --environment Production
 ```
 
 Build configurations:
