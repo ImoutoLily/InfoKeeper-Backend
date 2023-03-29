@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="HotChocolate.AspNetCore" Version="13.0.5" />
+      <PackageReference Include="Mapster" Version="7.3.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\InfoKeeper.Core.Business.Abstract\InfoKeeper.Core.Business.Abstract.csproj" />
+      <ProjectReference Include="..\InfoKeeper.Core.Business\InfoKeeper.Core.Business.csproj" />
+      <ProjectReference Include="..\InfoKeeper.Core.Models\InfoKeeper.Core.Models.csproj" />
+      <ProjectReference Include="..\InfoKeeper.Infrastructure.Database.Abstract\InfoKeeper.Infrastructure.Database.Abstract.csproj" />
+      <ProjectReference Include="..\InfoKeeper.Infrastructure.Database.MySQL\InfoKeeper.Infrastructure.Database.MySQL.csproj" />
+    </ItemGroup>
+
+</Project>
