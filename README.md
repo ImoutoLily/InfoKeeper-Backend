@@ -1,10 +1,10 @@
 ﻿# InfoKeeper
 `InfoKeeper` is an information management system which uses a tagging system to help keep everything neat and organised.
 
-This is a backend project written in C# 11.0 using .NET 7.0 and GraphQL for the API as opposed to REST. Although this project only supports MySQL, it should be easy to develop the necessary code to make it compatible with other databases. This is because we code to abstractions and not implementations, which results in the different implementations being interchangeable.
+This is a backend project written in C# 11.0 using .NET 7.0 and GraphQL for the API as opposed to REST. Although this project only supports MySQL, it should be easy to develop the necessary code to make it compatible with other databases if so desired.
 
 ### Why?
-A lot of social media platforms have a "pinning" system, where users can pin messages, images or files. I have always loved using such systems, especially since I am unorganised. It helped me out in many ways, yet it feels limiting both because most platforms have a maximum amount of pins one can have, but also because there are certain features that would make the pinned items even more organised and clear that don't exist in the majority of social media platforms.
+A lot of social media platforms have a "pinning" system, where users can pin messages, images or files. I have always loved using such systems, especially since I am disorganized. It has helped me out in many ways, but it feels limiting, both because most platforms have a maximum amount of pins one can have, and also because there are certain features that would make the pinned items even more organised and clear that don't yet exist on the majority of social media platforms.
 
 ## Contents
 1. [Requirements](#requirements)
