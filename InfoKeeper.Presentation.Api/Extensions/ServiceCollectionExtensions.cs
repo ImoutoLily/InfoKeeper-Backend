@@ -33,6 +33,7 @@ public static class ServiceCollectionExtensions
         return services.AddDbContext<InfoKeeperContext>(x =>
         {
             x.UseMySql(connectionString, new MySqlServerVersion(new Version(version)));
+            x.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         });
     }
 
