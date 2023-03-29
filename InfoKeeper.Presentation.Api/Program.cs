@@ -15,7 +15,7 @@ TypeAdapterConfig<ItemRequest, Item>.NewConfig()
         src => (src.TagIds ?? ImmutableList<int>.Empty).Select(x => new Item { Id = x }));
 
 builder.Configuration
-    .AddEnvFiles(builder.Environment);
+    .AddEnvironmentVariables();
 
 builder.Services
     .AddAllServices(builder.Configuration);

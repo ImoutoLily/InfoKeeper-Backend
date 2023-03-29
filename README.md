@@ -29,11 +29,9 @@ git clone https://github.com/ImoutoLily/InfoKeeper-Backend.git
 ```
 
 ## Setup
-The MySQL connection string and version are read from runtime specific .env files that you will have to create. The values for the connection string and version should be stored in variables named `INFO_KEEPER_CONNECTION_STRING` and `INFO_KEEPER_VERSION` respectively.
+The MySQL connection string and version are read from environment variables named `INFO_KEEPER_CONNECTION_STRING` and `INFO_KEEPER_VERSION` respectively.
 
-The .env file for the Development runtime environment should be located at `InfoKeeper.Presentation.Api/dev.env` and the one for the Production runtime environment should be located at `InfoKeeper.Presentation.Api/prod.env`.
-
-Example of .env file:
+Example of the environment variables:
 
 ```bash
 INFO_KEEPER_CONNECTION_STRING="server=127.0.0.1;uid=root;pwd=12345;database=test"
