@@ -1,5 +1,8 @@
-﻿using InfoKeeper.Core.Business;
+﻿using FluentValidation;
+using InfoKeeper.Core.Business;
 using InfoKeeper.Core.Business.Abstract;
+using InfoKeeper.Core.Business.Validators;
+using InfoKeeper.Core.Models;
 using InfoKeeper.Infrastructure.Database.Abstract;
 using InfoKeeper.Infrastructure.Database.MySQL;
 using InfoKeeper.Presentation.Api.GraphQL.Mutations;
@@ -15,6 +18,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddContext(configuration)
             .AddDatabase()
+            .AddValidators()
             .AddBusinessLogic()
             .AddGraphQl();
 
@@ -41,6 +45,12 @@ public static class ServiceCollectionExtensions
     {
         return services.AddTransient<ITagDatabase, TagDatabase>()
             .AddTransient<IItemDatabase, ItemDatabase>();
+    }
+
+    private static IServiceCollection AddValidators(this IServiceCollection services)
+    {
+        return services.AddTransient<IValidator<Tag>, TagValidator>()
+            .AddTransient<IValidator<Item>, ItemValidator>();
     }
 
     private static IServiceCollection AddBusinessLogic(this IServiceCollection services)
