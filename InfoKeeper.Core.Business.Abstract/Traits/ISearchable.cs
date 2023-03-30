@@ -2,7 +2,7 @@
 
 namespace InfoKeeper.Core.Business.Abstract.Traits;
 
-public interface IIsSearchable<T>
+public interface ISearchable<T>
 {
     public Task<Result<List<T>>> Search(string query);
 }

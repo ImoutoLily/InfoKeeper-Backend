@@ -2,7 +2,7 @@
 
 namespace InfoKeeper.Core.Business.Abstract.Traits;
 
-public interface IHasCrudOperations<T>
+public interface ICrud<T>
 {
     public Task<Result<List<T>>> GetAsync();
     public Task<Result<T?>> GetAsync(int id);

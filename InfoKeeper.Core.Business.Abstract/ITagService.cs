@@ -3,7 +3,7 @@ using InfoKeeper.Core.Models;
 
 namespace InfoKeeper.Core.Business.Abstract;
 
-public interface ITagService : IHasCrudOperations<Tag>
+public interface ITagService : ICrud<Tag>
 {
     
 }

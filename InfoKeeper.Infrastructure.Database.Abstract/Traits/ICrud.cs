@@ -1,6 +1,6 @@
 ﻿namespace InfoKeeper.Infrastructure.Database.Abstract.Traits;
 
-public interface IHasCrudOperations<T>
+public interface ICrud<T>
 {
     public Task<List<T>> GetAsync();
     public Task<T?> GetAsync(int id);

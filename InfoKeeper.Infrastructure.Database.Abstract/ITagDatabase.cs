@@ -2,7 +2,7 @@
 
 namespace InfoKeeper.Infrastructure.Database.Abstract;
 
-public interface ITagDatabase : Traits.IHasCrudOperations<Tag>
+public interface ITagDatabase : Traits.ICrud<Tag>
 {
     
 }
