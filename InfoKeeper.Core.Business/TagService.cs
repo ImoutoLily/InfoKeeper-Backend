@@ -1,4 +1,5 @@
-﻿using InfoKeeper.Core.Business.Abstract;
+﻿using FluentValidation;
+using InfoKeeper.Core.Business.Abstract;
 using InfoKeeper.Core.Business.Abstract.Models;
 using InfoKeeper.Core.Models;
 using InfoKeeper.Infrastructure.Database.Abstract;
@@ -8,10 +9,12 @@ namespace InfoKeeper.Core.Business;
 public class TagService : ITagService
 {
     private readonly ITagDatabase _database;
+    private readonly IValidator<Tag> _validator;
 
-    public TagService(ITagDatabase database)
+    public TagService(ITagDatabase database, IValidator<Tag> validator)
     {
         _database = database;
+        _validator = validator;
     }
     
     public async Task<Result<List<Tag>>> GetAsync()

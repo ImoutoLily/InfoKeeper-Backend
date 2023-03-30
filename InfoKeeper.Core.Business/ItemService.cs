@@ -1,4 +1,5 @@
-﻿using InfoKeeper.Core.Business.Abstract;
+﻿using FluentValidation;
+using InfoKeeper.Core.Business.Abstract;
 using InfoKeeper.Core.Business.Abstract.Models;
 using InfoKeeper.Core.Models;
 using InfoKeeper.Infrastructure.Database.Abstract;
@@ -8,10 +9,12 @@ namespace InfoKeeper.Core.Business;
 public class ItemService : IItemService
 {
     private readonly IItemDatabase _database;
+    private readonly IValidator<Item> _validator;
 
-    public ItemService(IItemDatabase database)
+    public ItemService(IItemDatabase database, IValidator<Item> validator)
     {
         _database = database;
+        _validator = validator;
     }
 
     public async Task<Result<List<Item>>> GetAsync()
