@@ -1,4 +1,4 @@
-﻿namespace InfoKeeper.Core.Business.Abstract;
+﻿namespace InfoKeeper.Core.Business.Abstract.Models;
 
 public class Result
 {
