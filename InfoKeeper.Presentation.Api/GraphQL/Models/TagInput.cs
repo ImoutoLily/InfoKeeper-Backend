@@ -1,6 +1,6 @@
 ﻿namespace InfoKeeper.Presentation.Api.GraphQL.Models;
 
-public class TagRequest
+public class TagInput
 {
     public string Name { get; set; } = null!;
     public string Color { get; set; } = null!;

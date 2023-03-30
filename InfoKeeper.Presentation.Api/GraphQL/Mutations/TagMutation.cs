@@ -9,7 +9,7 @@ namespace InfoKeeper.Presentation.Api.GraphQL.Mutations;
 [ExtendObjectType(OperationType.Mutation)]
 public class TagMutation
 {
-    public async Task<Tag> CreateTagAsync([Service] ITagService service, TagRequest input)
+    public async Task<Tag> CreateTagAsync([Service] ITagService service, TagInput input)
     {
         var tag = input.Adapt<Tag>();
         
@@ -18,7 +18,7 @@ public class TagMutation
         return result.Value!;
     }
 
-    public async Task<Tag?> UpdateTagAsync([Service] ITagService service, TagRequest input, int id)
+    public async Task<Tag?> UpdateTagAsync([Service] ITagService service, TagInput input, int id)
     {
         var tag = input.Adapt<Tag>();
 

@@ -6,11 +6,11 @@ using Mapster;
 
 var builder = WebApplication.CreateBuilder(args);
 
-TypeAdapterConfig<TagRequest, Tag>.NewConfig()
+TypeAdapterConfig<TagInput, Tag>.NewConfig()
     .Map(dest => dest.Items, 
         src => (src.ItemIds ?? ImmutableList<int>.Empty).Select(x => new Item { Id = x }));
 
-TypeAdapterConfig<ItemRequest, Item>.NewConfig()
+TypeAdapterConfig<ItemInput, Item>.NewConfig()
     .Map(dest => dest.Tags, 
         src => (src.TagIds ?? ImmutableList<int>.Empty).Select(x => new Item { Id = x }));
 

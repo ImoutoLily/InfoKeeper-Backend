@@ -9,7 +9,7 @@ namespace InfoKeeper.Presentation.Api.GraphQL.Mutations;
 [ExtendObjectType(OperationType.Mutation)]
 public class ItemMutation
 {
-    public async Task<Item> CreateItemAsync([Service] IItemService service, ItemRequest input)
+    public async Task<Item> CreateItemAsync([Service] IItemService service, ItemInput input)
     {
         var item = input.Adapt<Item>();
         
@@ -18,7 +18,7 @@ public class ItemMutation
         return result.Value!;
     }
 
-    public async Task<Item?> UpdateItemAsync([Service] IItemService service, ItemRequest input, int id)
+    public async Task<Item?> UpdateItemAsync([Service] IItemService service, ItemInput input, int id)
     {
         var item = input.Adapt<Item>();
         

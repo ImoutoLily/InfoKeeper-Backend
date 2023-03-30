@@ -1,6 +1,6 @@
 ﻿namespace InfoKeeper.Presentation.Api.GraphQL.Models;
 
-public class ItemRequest
+public class ItemInput
 {
     public string Title { get; set; } = null!;
     public string Content { get; set; } = null!;
