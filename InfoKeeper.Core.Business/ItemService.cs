@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using InfoKeeper.Core.Business.Abstract;
 using InfoKeeper.Core.Business.Abstract.Models;
+using InfoKeeper.Core.Business.Extensions;
 using InfoKeeper.Core.Models;
 using InfoKeeper.Infrastructure.Database.Abstract;
 
@@ -33,6 +34,13 @@ public class ItemService : IItemService
 
     public async Task<Result<Item>> CreateAsync(Item item)
     {
+        var result = _validator.Validate(item);
+
+        if (!result.IsValid)
+        {
+            return Result.Fail<Item>(result.GetCustomErrors());
+        }
+        
         var storedItem = await _database.CreateAsync(item);
 
         return Result.Ok(storedItem);
@@ -40,6 +48,13 @@ public class ItemService : IItemService
 
     public async Task<Result<Item?>> UpdateAsync(Item item)
     {
+        var result = _validator.Validate(item);
+
+        if (!result.IsValid)
+        {
+            return Result.Fail<Item?>(result.GetCustomErrors());
+        }
+        
         var storedItem = await _database.UpdateAsync(item);
         
         return Result.Ok(storedItem);

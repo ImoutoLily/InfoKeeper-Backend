@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using InfoKeeper.Core.Business.Abstract;
 using InfoKeeper.Core.Business.Abstract.Models;
+using InfoKeeper.Core.Business.Extensions;
 using InfoKeeper.Core.Models;
 using InfoKeeper.Infrastructure.Database.Abstract;
 
@@ -33,6 +34,13 @@ public class TagService : ITagService
 
     public async Task<Result<Tag>> CreateAsync(Tag tag)
     {
+        var result = _validator.Validate(tag);
+
+        if (!result.IsValid)
+        {
+            return Result.Fail<Tag>(result.GetCustomErrors());
+        }
+        
         var storedTag = await _database.CreateAsync(tag);
 
         return Result.Ok(storedTag);
@@ -40,6 +48,13 @@ public class TagService : ITagService
 
     public async Task<Result<Tag?>> UpdateAsync(Tag tag)
     {
+        var result = _validator.Validate(tag);
+
+        if (!result.IsValid)
+        {
+            return Result.Fail<Tag?>(result.GetCustomErrors());
+        }
+        
         var storedTag = await _database.UpdateAsync(tag);
 
         return Result.Ok(storedTag);

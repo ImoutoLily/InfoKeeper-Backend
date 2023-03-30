@@ -8,7 +8,17 @@ public class Result
     {
         Errors = errors ?? new List<IError>();
     }
+    
+    public static Result Ok()
+    {
+        return new Result();
+    }
 
+    public static Result<T> Ok<T>(T value)
+    {
+        return new Result<T>(value);
+    }
+    
     public static Result Fail(IList<IError> errors)
     {
         return new Result(errors);
@@ -27,16 +37,6 @@ public class Result
     public static Result<T> Fail<T>(IError error)
     {
         return new Result<T>(new List<IError>() { error });
-    }
-
-    public static Result Ok()
-    {
-        return new Result();
-    }
-
-    public static Result<T> Ok<T>(T value)
-    {
-        return new Result<T>(value);
     }
 }
 
