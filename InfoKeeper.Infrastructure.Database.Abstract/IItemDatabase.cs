@@ -1,5 +1,5 @@
 ﻿using InfoKeeper.Core.Models;
-using InfoKeeper.Shared.Traits;
+using InfoKeeper.Infrastructure.Database.Abstract.Traits;
 
 namespace InfoKeeper.Infrastructure.Database.Abstract;
 

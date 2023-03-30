@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\InfoKeeper.Core.Models\InfoKeeper.Core.Models.csproj" />
-      <ProjectReference Include="..\InfoKeeper.Shared.Traits\InfoKeeper.Shared.Traits.csproj" />
     </ItemGroup>
 
 </Project>

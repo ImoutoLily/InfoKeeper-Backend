@@ -13,7 +13,9 @@ public class ItemMutation
     {
         var item = input.Adapt<Item>();
         
-        return await service.CreateAsync(item);
+        var result = await service.CreateAsync(item);
+
+        return result.Value!;
     }
 
     public async Task<Item?> UpdateItemAsync([Service] IItemService service, ItemRequest input, int id)
@@ -22,9 +24,15 @@ public class ItemMutation
         
         item.Id = id;
         
-        return await service.UpdateAsync(item);
+        var result = await service.UpdateAsync(item);
+
+        return result.Value!;
     }
 
     public async Task<Item?> DeleteItemAsync([Service] IItemService service, int id)
-        => await service.DeleteAsync(id);
+    {
+        var result = await service.DeleteAsync(id);
+
+        return result.Value!;
+    }
 }

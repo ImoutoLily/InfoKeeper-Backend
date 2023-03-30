@@ -8,8 +8,16 @@ namespace InfoKeeper.Presentation.Api.GraphQL.Queries;
 public class TagQuery
 {
     public async Task<List<Tag>> GetTagsAsync([Service] ITagService service)
-        => await service.GetAsync();
+    {
+        var result = await service.GetAsync();
+
+        return result.Value!;
+    }
 
     public async Task<Tag?> GetTagAsync([Service] ITagService service, int id)
-        => await service.GetAsync(id);
+    {
+        var result = await service.GetAsync(id);
+
+        return result.Value!;
+    }
 }

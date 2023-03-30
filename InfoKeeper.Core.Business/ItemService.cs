@@ -1,4 +1,5 @@
 ﻿using InfoKeeper.Core.Business.Abstract;
+using InfoKeeper.Core.Business.Abstract.Models;
 using InfoKeeper.Core.Models;
 using InfoKeeper.Infrastructure.Database.Abstract;
 
@@ -13,33 +14,45 @@ public class ItemService : IItemService
         _database = database;
     }
 
-    public async Task<List<Item>> GetAsync()
+    public async Task<Result<List<Item>>> GetAsync()
     {
-        return await _database.GetAsync();
+        var items = await _database.GetAsync();
+
+        return Result.Ok(items);
     }
 
-    public async Task<Item?> GetAsync(int id)
+    public async Task<Result<Item?>> GetAsync(int id)
     {
-        return await _database.GetAsync(id);
+        var item = await _database.GetAsync(id);
+
+        return Result.Ok(item);
     }
 
-    public async Task<Item> CreateAsync(Item item)
+    public async Task<Result<Item>> CreateAsync(Item item)
     {
-        return await _database.CreateAsync(item);
+        var storedItem = await _database.CreateAsync(item);
+
+        return Result.Ok(storedItem);
     }
 
-    public async Task<Item?> UpdateAsync(Item item)
+    public async Task<Result<Item?>> UpdateAsync(Item item)
     {
-        return await _database.UpdateAsync(item);
+        var storedItem = await _database.UpdateAsync(item);
+        
+        return Result.Ok(storedItem);
     }
 
-    public async Task<Item?> DeleteAsync(int id)
+    public async Task<Result<Item?>> DeleteAsync(int id)
     {
-        return await _database.DeleteAsync(id);
+        var item = await _database.DeleteAsync(id);
+        
+        return Result.Ok(item);
     }
 
-    public async Task<List<Item>> Search(string query)
+    public async Task<Result<List<Item>>> Search(string query)
     {
-        return await _database.Search(query);
+        var items = await _database.Search(query);
+        
+        return Result.Ok(items);
     }
 }

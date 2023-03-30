@@ -1,4 +1,5 @@
 ﻿using InfoKeeper.Core.Business.Abstract;
+using InfoKeeper.Core.Business.Abstract.Models;
 using InfoKeeper.Core.Models;
 using InfoKeeper.Infrastructure.Database.Abstract;
 
@@ -13,28 +14,38 @@ public class TagService : ITagService
         _database = database;
     }
     
-    public async Task<List<Tag>> GetAsync()
+    public async Task<Result<List<Tag>>> GetAsync()
     {
-        return await _database.GetAsync();
+        var tags = await _database.GetAsync();
+        
+        return Result.Ok(tags);
     }
 
-    public async Task<Tag?> GetAsync(int id)
+    public async Task<Result<Tag?>> GetAsync(int id)
     {
-        return await _database.GetAsync(id);
+        var tag = await _database.GetAsync(id);
+
+        return Result.Ok(tag);
     }
 
-    public async Task<Tag> CreateAsync(Tag tag)
+    public async Task<Result<Tag>> CreateAsync(Tag tag)
     {
-        return await _database.CreateAsync(tag);
+        var storedTag = await _database.CreateAsync(tag);
+
+        return Result.Ok(storedTag);
     }
 
-    public async Task<Tag?> UpdateAsync(Tag tag)
+    public async Task<Result<Tag?>> UpdateAsync(Tag tag)
     {
-        return await _database.UpdateAsync(tag);
+        var storedTag = await _database.UpdateAsync(tag);
+
+        return Result.Ok(storedTag);
     }
 
-    public async Task<Tag?> DeleteAsync(int id)
+    public async Task<Result<Tag?>> DeleteAsync(int id)
     {
-        return await _database.DeleteAsync(id);
+        var tag = await _database.DeleteAsync(id);
+
+        return Result.Ok(tag);
     }
 }

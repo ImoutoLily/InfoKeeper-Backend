@@ -13,7 +13,9 @@ public class TagMutation
     {
         var tag = input.Adapt<Tag>();
         
-        return await service.CreateAsync(tag);
+        var result = await service.CreateAsync(tag);
+
+        return result.Value!;
     }
 
     public async Task<Tag?> UpdateTagAsync([Service] ITagService service, TagRequest input, int id)
@@ -22,9 +24,15 @@ public class TagMutation
 
         tag.Id = id;
         
-        return await service.UpdateAsync(tag);
+        var result = await service.UpdateAsync(tag);
+
+        return result.Value!;
     }
 
     public async Task<Tag?> DeleteTagAsync([Service] ITagService service, int id)
-        => await service.DeleteAsync(id);
+    {
+        var result = await service.DeleteAsync(id);
+
+        return result.Value!;
+    }
 }

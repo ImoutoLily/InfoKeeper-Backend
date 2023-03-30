@@ -1,5 +1,5 @@
-﻿using InfoKeeper.Core.Models;
-using InfoKeeper.Shared.Traits;
+﻿using InfoKeeper.Core.Business.Abstract.Traits;
+using InfoKeeper.Core.Models;
 
 namespace InfoKeeper.Core.Business.Abstract;
 
